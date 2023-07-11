@@ -9,7 +9,6 @@ import UIKit
 
 final class QuestionViewController: UIViewController {
     
-    // MARK: IBOutletts
     @IBOutlet var questionLabel: UILabel!
     @IBOutlet var questionProgressView: UIProgressView!
     
@@ -29,7 +28,7 @@ final class QuestionViewController: UIViewController {
             rangedSlider.value = answerCount / 2
         }
     }
-     // MARK: Private properties
+     
     private let questions = Question.getQuestions()
     private var answersChosen: [Answer] = []
     private var currentAnswers: [Answer] {
@@ -37,18 +36,17 @@ final class QuestionViewController: UIViewController {
     }
     private var questionIndex = 0
 
-    // MARK: Override methods
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
     }
     
+    // MARK: 2. Передать массив с ответами на экран с результатами
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let resultVC = segue.destination as? ResultViewController else { return }
         resultVC.userAnswers = answersChosen
     }
 
-    // MARK: IBActions
     @IBAction func singleAnswerButtonPressed(_ sender: UIButton) {
         guard let buttonIndex = singleButtons.firstIndex(of: sender) else { return }
         

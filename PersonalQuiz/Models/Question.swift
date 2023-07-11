@@ -5,7 +5,6 @@
 //  Created by Alexey Efimov on 15.02.2023.
 //
 
-// MARK: Question
 struct Question {
     let title: String
     let responseType: ResponseType
@@ -47,20 +46,17 @@ struct Question {
     }
 }
 
-// MARK: ResponseType
 enum ResponseType {
     case single
     case multiple
     case ranged
 }
 
-// MARK: Answer
 struct Answer {
     let title: String
     let animal: Animal
 }
 
-// MARK: Animal
 enum Animal: Character {
     case dog = "🐶"
     case cat = "🐱"
@@ -80,6 +76,7 @@ enum Animal: Character {
         }
     }
     
+    // MARK: 3. Определить наиболее часто встречающийся тип животного
     static func getResult(_ answers: [Answer]) -> Animal {
         var result: Animal!
         
@@ -90,7 +87,6 @@ enum Animal: Character {
         if let animal = resultAnimal?.key {
             result = animal
         }
-        
         return result
     }
 }

@@ -88,7 +88,7 @@
         <!--Вопрос №-->
         <scene sceneID="VVA-g3-p3a">
             <objects>
-                <viewController id="eIM-3L-XvK" customClass="QuestionViewController" customModule="PersonalQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="eIM-3L-XvK" customClass="QuestionViewController" customModule="Lesson_2_08_PersonalQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PCA-P4-Z23">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -293,7 +293,7 @@
         <!--Результат-->
         <scene sceneID="A6f-eR-r1q">
             <objects>
-                <viewController id="LiX-kO-U2P" customClass="ResultViewController" customModule="PersonalQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="LiX-kO-U2P" customClass="ResultViewController" customModule="Lesson_2_08_PersonalQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0zH-za-Hq0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

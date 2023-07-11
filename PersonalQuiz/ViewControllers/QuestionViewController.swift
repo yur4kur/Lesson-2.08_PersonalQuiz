@@ -7,7 +7,7 @@
 
 import UIKit
 
-class QuestionViewController: UIViewController {
+final class QuestionViewController: UIViewController {
     
     // MARK: IBOutletts
     @IBOutlet var questionLabel: UILabel!

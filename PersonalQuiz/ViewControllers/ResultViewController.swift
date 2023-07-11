@@ -7,20 +7,29 @@
 
 import UIKit
 
-class ResultViewController: UIViewController {
+final class ResultViewController: UIViewController {
     
-    // 1. Избавиться от кнопки возврата назад на экране результатов // Done
-    // 2. Передать массив с ответами на экран с результатами // Done
-    // 3. Определить наиболее часто встречающийся тип животного
-    // 4. Отобразить результаты в соответствии с этим животным
-
+    // MARK: IBOutlets
+    @IBOutlet var animalPictureLabel: UILabel!
+    @IBOutlet var animalDefinitionLabel: UILabel!
+    
+    // MARK: Public properties
     var userAnswers: [Answer]!
     
+    // MARK: Private propeties
+    private var result: Animal {
+        Question.getResult(userAnswers)
+    }
+    
+    // MARK: Override methods
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton.toggle()
+        animalPictureLabel.text = String(result.rawValue)
+        animalDefinitionLabel.text = result.definition
     }
     
+    // MARK: IBActions
     @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
         dismiss(animated: true)
     }

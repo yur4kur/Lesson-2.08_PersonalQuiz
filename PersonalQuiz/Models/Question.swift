@@ -11,7 +11,6 @@ struct Question {
     let responseType: ResponseType
     let answers: [Answer]
     
-    // MARK: Get questions method
     static func getQuestions() -> [Question] {
         [
             Question(
@@ -46,21 +45,6 @@ struct Question {
             )
         ]
     }
-    
-    // MARK: Get result method
-    static func getResult(_ answers: [Answer]) -> Animal {
-        var result: Animal!
-        
-        let animals = answers.map { ($0.animal, 1) }
-        let animalFrequencies = Dictionary(animals, uniquingKeysWith: +)
-        let resultAnimal = animalFrequencies.max { $0.value < $1.value }
-        
-        if let animal = resultAnimal?.key {
-            result = animal
-        }
-        
-        return result
-    }
 }
 
 // MARK: ResponseType
@@ -94,5 +78,19 @@ enum Animal: Character {
         case .turtle:
             return "Ваша сила - в мудрости. Медленный и вдумчивый выигрывает на больших дистанциях."
         }
+    }
+    
+    static func getResult(_ answers: [Answer]) -> Animal {
+        var result: Animal!
+        
+        let animals = answers.map { ($0.animal, 1) }
+        let animalFrequencies = Dictionary(animals, uniquingKeysWith: +)
+        let resultAnimal = animalFrequencies.max { $0.value < $1.value }
+        
+        if let animal = resultAnimal?.key {
+            result = animal
+        }
+        
+        return result
     }
 }

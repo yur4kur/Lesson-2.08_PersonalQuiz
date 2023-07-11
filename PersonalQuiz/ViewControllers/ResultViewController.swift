@@ -18,7 +18,7 @@ final class ResultViewController: UIViewController {
     
     // MARK: Private propeties
     private var result: Animal {
-        Question.getResult(userAnswers)
+        Animal.getResult(userAnswers)
     }
     
     // MARK: Override methods

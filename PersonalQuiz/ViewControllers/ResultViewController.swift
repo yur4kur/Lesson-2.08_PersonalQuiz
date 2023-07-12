@@ -5,7 +5,8 @@
 //  Created by Alexey Efimov on 19.02.2023.
 //
 
-// 2. Передать массив с ответами на экран с результатами // Done
+// 1. Избавиться от кнопки возврата назад на экране результатов
+// 2. Передать массив с ответами на экран с результатами
 // 3. Определить наиболее часто встречающийся тип животного
 // 4. Отобразить результаты в соответствии с этим животным
 
@@ -13,17 +14,19 @@ import UIKit
 
 final class ResultViewController: UIViewController {
     
+    // MARK: IBOutlets
     @IBOutlet var animalPictureLabel: UILabel!
     @IBOutlet var animalDefinitionLabel: UILabel!
     
-    // MARK: 2. Передать массив с ответами на экран с результатами
+    // MARK: Public properties
     var userAnswers: [Answer]!
     
-    // MARK: 3. Определить наиболее часто встречающийся тип животного
+    // MARK: Private properties
     private var result: Animal {
-        Animal.getResult(userAnswers)
+        getResult(userAnswers)
     }
-
+    
+    // MARK: Override methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,11 +34,33 @@ final class ResultViewController: UIViewController {
         navigationItem.hidesBackButton.toggle()
         
         // MARK: 4. Отобразить результаты в соответствии с этим животным
-        animalPictureLabel.text = String(result.rawValue)
-        animalDefinitionLabel.text = result.definition
+        setupLabels(with: result)
     }
     
+    // MARK: IBACtions
     @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
         dismiss(animated: true)
+    }
+}
+
+// MARK: Extensions
+private extension ResultViewController {
+    // MARK: 3. Определить наиболее часто встречающийся тип животного
+    func getResult(_ answers: [Answer]) -> Animal {
+        var result: Animal!
+        
+        let animals = answers.map { ($0.animal, 1) }
+        let animalFrequencies = Dictionary(animals, uniquingKeysWith: +)
+        let resultAnimal = animalFrequencies.max { $0.value < $1.value }
+        
+        if let animal = resultAnimal?.key {
+            result = animal
+        }
+        return result
+    }
+    // MARK: 4. Отобразить результаты в соответствии с этим животным
+    func setupLabels(with animal: Animal) {
+        animalPictureLabel.text = String(animal.rawValue)
+        animalPictureLabel.text = animal.definition
     }
 }

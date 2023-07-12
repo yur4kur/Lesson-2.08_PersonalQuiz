@@ -75,18 +75,4 @@ enum Animal: Character {
             return "Ваша сила - в мудрости. Медленный и вдумчивый выигрывает на больших дистанциях."
         }
     }
-    
-    // MARK: 3. Определить наиболее часто встречающийся тип животного
-    static func getResult(_ answers: [Answer]) -> Animal {
-        var result: Animal!
-        
-        let animals = answers.map { ($0.animal, 1) }
-        let animalFrequencies = Dictionary(animals, uniquingKeysWith: +)
-        let resultAnimal = animalFrequencies.max { $0.value < $1.value }
-        
-        if let animal = resultAnimal?.key {
-            result = animal
-        }
-        return result
-    }
 }

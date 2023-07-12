@@ -56,11 +56,13 @@ private extension ResultViewController {
         if let animal = resultAnimal?.key {
             result = animal
         }
+        
+        setupLabels(with: result)
         return result
     }
     // MARK: 4. Отобразить результаты в соответствии с этим животным
     func setupLabels(with animal: Animal) {
-        animalPictureLabel.text = String(animal.rawValue)
-        animalPictureLabel.text = animal.definition
+        animalPictureLabel.text = "Вы - \(animal.rawValue)"
+        animalDefinitionLabel.text = animal.definition
     }
 }
